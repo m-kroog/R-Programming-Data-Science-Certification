@@ -11,12 +11,12 @@ best <- function(state, outcome) {
         if (!any(care_df[2] == state)) stop("invalid state")
         if (!any(outcome %in% care_names)) stop("invalid outcome")
         ## subset state that matches argument
-        care_df_final <- care_df[care_df[, "state"] %in% state,]
+        care_df_state <- care_df[care_df[, "state"] %in% state,]
         ## create a dataframe containing name, state and outcome data
-        care_df_test <- data.frame(care_df_final[1], care_df_final[2])
-        care_df_test["outcome"] <- care_df_final[outcome]
+        care_df_final <- data.frame(care_df_state[1], care_df_state[2])
+        care_df_final["outcome"] <- care_df_state[outcome]
         ## subset outcome that matches argument
-        results <- care_df_test[which.min(care_df_test[, "outcome"]),]
+        results <- care_df_final[which.min(care_df_final[, "outcome"]),]
         ## print hospital name        
         results[,1]
 }
