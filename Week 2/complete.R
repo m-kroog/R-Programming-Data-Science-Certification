@@ -9,6 +9,5 @@ complete <- function(directory, id = 1:332) {
         nobs <- unlist(lapply(path[id], complete_cases))
         ## create a data frame
         data.frame(id = id, nobs = nobs)
-        
 }
 
